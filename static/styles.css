@@ -50,3 +50,14 @@ html body {
 #page {
   background-color: white;
 }
+
+.btn-block {
+  border-color: #28262c;
+  color: #28262c;
+}
+
+.btn-block:hover {
+  border-color: #28262c;
+  background-color: #28262c;
+
+}

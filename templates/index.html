@@ -2,11 +2,11 @@
 {%block title%}Home Page{%endblock%}
 {%block content%}
 <div id="color">
-<p class="text-center mt-5 display-3">"Difficult roads often lead to beautiful destinations."</p>
+<p class="text-center mt-5 display-3" id="About">"Difficult roads often lead to beautiful destinations."</p>
 <div class="container">
   <div class="row">
         <div class="col order-2 mt-5 pt-5">
-           <h1 class="text-center fade-in">About me</h1>
+           <h1 class="text-center fade-in" >About me</h1>
            <h3 class="text-center fade-in" id="description">I became interested in programming when I was 12 years old, back then I was
               also diving into the basics of C++. Due to new priorities, I abandoned this passion,
               only to return to it after 7 years. This time, I started learning Python. I definitely
@@ -21,132 +21,36 @@
 </div>
 <div id="two">
   <div class="portfolio ">
-    <h1 class="text-center pt-4">Portfolio</h1>
+    <h1 class="text-center pt-4 fade-in" id="Portfolio">Portfolio</h1>
   </div>
   <div class="container pt-4 pb-4"> 
     <div class="row"> 
+      {% for post in posts %}
         <div class="col-lg-4 mb-2"> 
             <div class="card"> 
-                <img class="card-img-top" src="../static/projectphoto1.jpg" alt=""> 
+                <img class="card-img-top" src="{{post.photo_url}}" alt=""> 
 
-                <div class="card-body"> 
-                    <h5 class="card-title text-center">Card title</h5> 
+                <div class="card-body" > 
+                    <h5 class="card-title text-center">{{post.title}}</h5> 
                     <p class="card-text"> 
-                        Some quick example text to build on  
-                        the card title and make up the bulk  
-                        of the card's content. 
+                       {{post.short_content[:78]}} 
                     </p> 
                     <div class="d-flex justify-content-center">
-                    <a href="#" class="btn btn-outline-primary text-center"> 
-                        Card link 
+                    <a href="{{url_for('project', title=post.title)}}" class="btn btn-outline-dark text-center btn-block"> 
+                        Read 
                     </a> 
                   </div>
                 </div> 
             </div> 
         </div> 
-        <div class="col-lg-4 mb-2"> 
-            <div class="card"> 
-                <img class="card-img-top" src="../static/projectphoto1.jpg" alt=""> 
-
-                <div class="card-body"> 
-                  <h5 class="card-title text-center">Card title</h5> 
-                  <p class="card-text"> 
-                      Some quick example text to build on  
-                      the card title and make up the bulk  
-                      of the card's content. 
-                  </p> 
-                  <div class="d-flex justify-content-center">
-                  <a href="#" class="btn btn-outline-primary text-center"> 
-                      Card link 
-                  </a> 
-                </div>
-              </div> 
-            </div> 
-        </div>
-        <div class="col-lg-4 mb-2"> 
-          <div class="card"> 
-              <img class="card-img-top" src="../static/projectphoto1.jpg" alt=""> 
-
-              <div class="card-body"> 
-                <h5 class="card-title text-center">Card title</h5> 
-                <p class="card-text"> 
-                    Some quick example text to build on  
-                    the card title and make up the bulk  
-                    of the card's content. 
-                </p> 
-                <div class="d-flex justify-content-center">
-                <a href="#" class="btn btn-outline-primary text-center"> 
-                    Card link 
-                </a> 
-              </div>
-            </div> 
-          </div> 
-      </div>  
-    </div> 
-    <div class="row"> 
-      <div class="col-lg-4 mb-2"> 
-          <div class="card"> 
-              <img class="card-img-top" src="../static/projectphoto1.jpg" alt=""> 
-
-              <div class="card-body"> 
-                <h5 class="card-title text-center">Card title</h5> 
-                <p class="card-text"> 
-                    Some quick example text to build on  
-                    the card title and make up the bulk  
-                    of the card's content. 
-                </p> 
-                <div class="d-flex justify-content-center">
-                <a href="#" class="btn btn-outline-primary text-center"> 
-                    Card link 
-                </a> 
-              </div>
-            </div> 
-          </div> 
-      </div> 
-      <div class="col-lg-4 mb-2"> 
-          <div class="card"> 
-              <img class="card-img-top" src="../static/projectphoto1.jpg" alt=""> 
-
-              <div class="card-body"> 
-                <h5 class="card-title text-center">Card title</h5> 
-                <p class="card-text"> 
-                    Some quick example text to build on  
-                    the card title and make up the bulk  
-                    of the card's content. 
-                </p> 
-                <div class="d-flex justify-content-center">
-                <a href="#" class="btn btn-outline-primary text-center"> 
-                    Card link 
-                </a> 
-              </div>
-            </div> 
-          </div> 
-      </div>
-      <div class="col-lg-4 mb-2"> 
-        <div class="card"> 
-            <img class="card-img-top" src="../static/projectphoto1.jpg" alt=""> 
-
-            <div class="card-body"> 
-              <h5 class="card-title text-center">Card title</h5> 
-              <p class="card-text"> 
-                  Some quick example text to build on  
-                  the card title and make up the bulk  
-                  of the card's content. 
-              </p> 
-              <div class="d-flex justify-content-center">
-              <a href="#" class="btn btn-outline-primary text-center"> 
-                  Card link 
-              </a> 
-            </div>
-          </div> 
-        </div> 
+        {% endfor %}
     </div>  
   </div> 
 </div> 
 </div>
 <div class="contact">
   <div class="contact">
-    <h1 class="contact__text text-center pt-2">
+    <h1 class="contact__text text-center pt-2 fade-in">
       Contact with me:
     </h1>
   </div>
@@ -155,12 +59,12 @@
       <div class="col order-2">
         <img src="../static/contact.png" style="width:550px;height:550px;">
       </div>
-        <div class="col order-1 mt-5 pt-5 pb-4">
-          <p>Name: <b> Kacper Racowiscki </b></p>
-          <p>Age: <b>19 Years</b></p>
-          <p>From: <b>Rzeszow, Poland</b></p>
-          <p>E-mail: <b>Kacper.ros2@interia.pl</b></p>
-          <button type="button" class="btn btn-outline-danger btn-lg">Download CV</button>
+        <div class="col order-1 mt-5 pt-5 pb-4" id="Contact">
+          <p style="font-size: 30px;">Name: <b> Kacper Racaweowiscki </b></p>
+          <p style="font-size: 30px;">Age: <b>19 Years</b></p>
+          <p style="font-size: 30px;">From: <b>Rzqeeow, Poland</b></p>
+          <p style="font-size: 30px;">E-mail: <b>Kacper.adasd2@interia.pl</b></p>
+          <a href="../static/cv.docx" download="cv"><button type="button" class="btn btn-outline-danger btn-lg">Download CV</button></a>
         </div>
       </div>
     </div>
